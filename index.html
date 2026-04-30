@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNNI T A | AI Engineer & Prompting Specialist</title>
+    <meta name="description" content="Portfolio of UNNI T A, an AI Engineer specializing in RAG systems, LangGraph agent orchestration, and Gen AI applications.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">UNNI</a>
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#stack">Stack</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; color:var(--text-primary); cursor:pointer;">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main class="container">
+        <div class="bento-grid">
+            <!-- Hero Card -->
+            <section id="home" class="bento-card card-hero reveal">
+                <div class="hero-badge">
+                    <span class="status-dot"></span>
+                    Available for AI Engineering Roles
+                </div>
+                <h1 class="hero-title">Building <span>Intelligent</span> Systems with Precision.</h1>
+                <p class="hero-sub">
+                    I am UNNI T A, an AI Engineer focused on RAG pipelines, LangGraph agent orchestration, and production-grade Gen AI systems.
+                </p>
+                <div style="display:flex; gap:1.5rem; margin-top:3rem;">
+                    <a href="mailto:unnita1235@gmail.com" class="hero-badge" style="background:var(--accent); color:var(--bg-primary); padding:0.8rem 1.5rem; font-size:0.9rem; margin:0;">
+                        <i data-lucide="mail" style="width:18px; margin-right:8px;"></i> Contact Me
+                    </a>
+                    <a href="#projects" class="hero-badge" style="background:var(--bg-secondary); border:1px solid var(--border); padding:0.8rem 1.5rem; font-size:0.9rem; margin:0;">
+                        About Me
+                    </a>
+                </div>
+            </section>
+
+            <!-- Profile Card -->
+            <div class="bento-card card-profile reveal">
+                <div class="profile-img-container">
+                    <img src="/src/assets/portrait.jpg" alt="UNNI T A" class="profile-img">
+                </div>
+                <h2 style="margin-bottom:0.5rem;">UNNI T A</h2>
+                <p class="text-secondary" style="font-size:0.875rem; margin-bottom:1.5rem;">AI Engineer & Prompting Specialist</p>
+                <div class="social-links" style="display:flex; gap:1rem;">
+                    <a href="https://github.com/unnita1235-code" target="_blank" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.linkedin.com/in/unnita1235-code/" target="_blank" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="mailto:unnita1235@gmail.com" class="btn-icon" aria-label="Email"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+
+            <!-- Project: MedComply -->
+            <div id="projects" class="bento-card card-project large reveal">
+                <div class="project-image-container">
+                    <img src="/src/assets/medcomply.png" alt="MedComply Dashboard">
+                </div>
+                <span class="project-tag">AI / RAG / Healthcare</span>
+                <h3 class="project-title">MedComply</h3>
+                <p class="project-desc">
+                    A Next.js 15 & FastAPI powered SaaS for HIPAA violation analysis. Features automated page-level citations and real-time streaming feedback via SSE. Expertly engineered for domain-specific accuracy.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/unnita1235-code/medcomply" target="_blank" class="btn-icon"><i data-lucide="external-link"></i></a>
+                    <a href="https://github.com/unnita1235-code/medcomply" target="_blank" class="btn-icon"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+
+            <!-- Tech Stack Card -->
+            <div id="stack" class="bento-card card-project large reveal">
+                <div class="card-title-row">
+                    <i data-lucide="layout-grid"></i>
+                    <h3>Tech Stack</h3>
+                </div>
+                <div class="stack-grid">
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/python" alt="Python">Python</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/nextdotjs" alt="Next.js">Next.js</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/fastapi" alt="FastAPI">FastAPI</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/openai" alt="OpenAI">OpenAI</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/langchain" alt="LangChain">LangChain</div>
+                    <div class="stack-pill"><i data-lucide="network"></i>LangGraph</div>
+                    <div class="stack-pill"><i data-lucide="database"></i>pgvector</div>
+                    <div class="stack-pill"><i data-lucide="database"></i>ChromaDB</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/docker" alt="Docker">Docker</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/vercel" alt="Vercel">Vercel</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/github" alt="GitHub">GitHub</div>
+                    <div class="stack-pill"><img src="https://cdn.simpleicons.org/linkedin" alt="LinkedIn">LinkedIn</div>
+                </div>
+            </div>
+
+            <!-- Project: NexusBase -->
+            <div class="bento-card card-project large reveal">
+                <div class="project-image-container">
+                    <img src="/src/assets/nexusbase.png" alt="NexusBase Knowledge Graph">
+                </div>
+                <span class="project-tag">LangGraph / Agents / Knowledge</span>
+                <h3 class="project-title">NexusBase</h3>
+                <p class="project-desc">
+                    Enterprise-grade RAG system utilizing LangGraph for multi-step document reasoning and graph-based agent orchestration. Implements advanced retrieval patterns using pgvector.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/unnita1235-code/NexusBase" target="_blank" class="btn-icon"><i data-lucide="external-link"></i></a>
+                    <a href="https://github.com/unnita1235-code/NexusBase" target="_blank" class="btn-icon"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+
+            <!-- Project: Research AI Agent -->
+            <div class="bento-card card-project reveal">
+                <div class="project-image-container">
+                    <img src="/src/assets/research_agent.png" alt="Research AI Agent Workspace">
+                </div>
+                <span class="project-tag">Vibe Coding / Agentic Research</span>
+                <h3 class="project-title">Research AI Agent</h3>
+                <p class="project-desc">
+                    Autonomous agent for web search and report synthesis using Tavily and LangGraph. Focused on high-velocity development and agentic utility.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/unnita1235-code/Research-AI-Agent" target="_blank" class="btn-icon"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+
+            <!-- Project: Dental Bot -->
+            <div class="bento-card card-project reveal">
+                <div class="project-image-container">
+                    <img src="/src/assets/dental_bot.png" alt="Dental Appointment Bot">
+                </div>
+                <span class="project-tag">AI Automation</span>
+                <h3 class="project-title">Dental Appointment Bot</h3>
+                <p class="project-desc">
+                    Stateful AI assistant for clinic automation. Handles multi-step scheduling workflows with FastAPI and Celery.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/unnita1235-code/Autonomous-Dental-Appointment-Bot" target="_blank" class="btn-icon"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+
+            <!-- Project: Hybrid Financial -->
+            <div class="bento-card card-project large reveal">
+                <div class="project-image-container">
+                    <img src="/src/assets/hybrid_financial.png" alt="Hybrid Financial Dashboard">
+                </div>
+                <span class="project-tag">Finance / LLM Impact</span>
+                <h3 class="project-title">Hybrid Financial</h3>
+                <p class="project-desc">
+                    A data-rich financial dashboard using LLMs for real-time sentiment scoring and news impact synthesis. Features sophisticated visualization and impact analysis.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/unnita1235-code/Hybrid-Financial" target="_blank" class="btn-icon"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+
+            <!-- Focus: Prompt Engineering -->
+            <div class="bento-card card-project reveal" style="background:var(--accent-glow); border-color:var(--accent);">
+                <div class="card-title-row">
+                    <i data-lucide="terminal"></i>
+                    <h3 style="color:var(--text-primary);">Focus Role</h3>
+                </div>
+                <p class="project-desc" style="color:var(--text-primary); opacity:0.8;">
+                    Expert in persona-based prompting, few-shot conditioning, and structured Pydantic outputs for deterministic AI responses.
+                </p>
+            </div>
+
+            <!-- Contact Card -->
+            <div id="contact" class="bento-card card-hero reveal" style="grid-column: span 4; text-align: center; background: var(--accent); color: var(--bg-primary);">
+                <h2 style="font-size: 3rem; margin-bottom: 1rem;">Let's build the future.</h2>
+                <p style="margin-bottom: 2.5rem; font-size: 1.25rem; opacity: 0.9;">Interested in AI Engineering, Gen AI, or Prompting roles?</p>
+                <div class="contact-actions">
+                    <a href="mailto:unnita1235@gmail.com" class="stack-tag contact-cta" style="background:var(--bg-primary); color:var(--text-primary); border:none; padding:1rem 2rem; font-weight:600;"><i data-lucide="mail"></i>Email Me</a>
+                    <a href="https://github.com/unnita1235-code" target="_blank" rel="noopener noreferrer" class="stack-tag contact-cta" style="background:transparent; border:1px solid var(--bg-primary); color:var(--bg-primary); padding:1rem 2rem; font-weight:600;"><i data-lucide="github"></i>GitHub</a>
+                    <a href="https://www.linkedin.com/in/unnita1235-code/" target="_blank" rel="noopener noreferrer" class="stack-tag contact-cta" style="background:transparent; border:1px solid var(--bg-primary); color:var(--bg-primary); padding:1rem 2rem; font-weight:600;"><i data-lucide="linkedin"></i>LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-secondary); font-size: 0.875rem;">
+        &copy; 2026 UNNI T A. Built with Vibe Coding principles.
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

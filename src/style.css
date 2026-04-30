@@ -1,0 +1,395 @@
+:root {
+    /* NeonMint Color Palette */
+    --bg-primary: #09090b; /* Zinc-950 */
+    --bg-secondary: #18181b; /* Zinc-900 */
+    --bg-secondary-rgb: 24, 24, 27;
+    --text-primary: #f8fafc; /* Slate-50 */
+    --text-secondary: #94a3b8; /* Slate-400 */
+    --accent: #4ade80; /* Mint-400 */
+    --accent-glow: rgba(74, 222, 128, 0.2);
+    --border: rgba(39, 39, 42, 0.8); /* Zinc-800 */
+    --card-radius: 24px;
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --bg-secondary-rgb: 244, 244, 245;
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+    --accent: #10b981; /* Emerald-600 */
+    --accent-glow: rgba(16, 185, 129, 0.1);
+    --border: #e4e4e7;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    transition: background-color 0.5s ease;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.75rem 1.5rem;
+    background: rgba(var(--bg-secondary-rgb), 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    z-index: 1000;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-primary);
+}
+
+/* Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.5rem;
+    margin-top: 6rem;
+}
+
+.bento-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.bento-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px -10px var(--accent-glow);
+}
+
+/* Specific Bento Cards */
+.card-hero {
+    grid-column: span 3;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-profile {
+    grid-column: span 1;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-project {
+    grid-column: span 2;
+}
+
+.card-project.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.card-stack {
+    grid-column: span 1;
+}
+
+/* Hero Content */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    width: fit-content;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.hero-sub {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+/* Profile Image */
+.profile-img-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(45deg, var(--accent), transparent);
+    margin-bottom: 1.5rem;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg-secondary);
+}
+
+/* Project Cards */
+.project-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.project-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.project-desc {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    margin-bottom: 2rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-secondary);
+}
+
+.btn-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-icon:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Stack Card - Reference Match */
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.stack-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.stack-pill:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.stack-pill img, .stack-pill i {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Project Card with Image */
+.project-image-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.project-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.card-project:hover .project-image-container img {
+    transform: scale(1.05);
+}
+
+/* Bento Card Headings */
+.card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-title-row i {
+    color: var(--accent);
+}
+
+/* Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-hero { grid-column: span 2; }
+    .card-profile { grid-column: span 2; grid-row: span 1; flex-direction: row; gap: 2rem; text-align: left; }
+    .hero-title { font-size: 3.5rem; }
+}
+
+/* Contact section CTAs (accent card) */
+.contact-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-cta svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-hero, .card-profile, .card-project, .card-stack {
+        grid-column: span 1;
+    }
+    .hero-title { font-size: 2.5rem; }
+    header { width: 90%; }
+}
