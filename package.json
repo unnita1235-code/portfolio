@@ -8,8 +8,10 @@
   },
   "scripts": {
     "check-cdn": "node scripts/check-cdn-versions.cjs",
+    "verify-cdn": "node scripts/verify-lucide-cdn.cjs",
     "dev": "vite",
-    "build": "npm run check-cdn && vite build",
+    "prebuild": "npm run verify-cdn && npm run check-cdn",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
