@@ -7,8 +7,9 @@
     "node": ">=20"
   },
   "scripts": {
+    "check-cdn": "node scripts/check-cdn-versions.cjs",
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run check-cdn && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
