@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PINNED_VERSIONS = {
-    'lucide': '0.263.1',
+    'lucide': '0.263.0',
     'googleapis': '2022-11-30',  // For Google Fonts
 };
 

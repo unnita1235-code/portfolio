@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SRI_HASHES = {
-  'https://unpkg.com/lucide@0.263.1': 'sha384-7+sUXuGPh/aNBxK1cH5BKt8qdXIeNw5EQHWQDVvEpAo7p7LQZzNvCvlsXJKRnVb'
+  'https://unpkg.com/lucide@0.263.0': 'sha384-M5C8ypX3CPO1fHYhk5bljzPqzqNtf8HkR3vJ4jOwKTfv0V5V3jYlxnXoSUMUqfR'
 };
 
 function fetchUrl(url) {
