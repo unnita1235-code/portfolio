@@ -1,0 +1,8 @@
+# CDN Version Lock File
+# These versions are pinned for reproducibility
+# Last updated: 2026-05-22
+
+lucide=0.263.0
+google-fonts-inter=4.5.2
+google-fonts-outfit=5.0.0
+simple-icons=11.45.0
