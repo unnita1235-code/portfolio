@@ -2,7 +2,7 @@
 
 Personal developer portfolio built with **Vite + Vanilla JS**, featuring a modern Bento-grid design, responsive layouts, and robust dark/light theme functionality. Deployed via automated CI/CD on Vercel.
 
-**Live Demo:** [Portfolio on Vercel](https://portfolio-git-main-aneeshaka82-3443s-projects.vercel.app/)
+**Live Demo:** [Portfolio on Vercel](https://portfolio-nine-gold-ps861lri0b.vercel.app/)
 
 ## Stack
 HTML · CSS · JavaScript · Vite · Lucide Icons

@@ -24,6 +24,19 @@
     --border: #e4e4e7;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --bg-secondary-rgb: 244, 244, 245;
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.1);
+    --border: #e4e4e7;
+  }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -172,6 +185,40 @@ header {
     gap: 1.5rem;
     margin-top: 3rem;
     flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-btn-primary {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border: none;
+}
+
+.hero-btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.hero-btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.hero-btn-secondary:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
 }
 
 .hero-badge {
@@ -385,6 +432,20 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.contact-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .contact-cta svg {
