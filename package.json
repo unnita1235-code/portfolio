@@ -7,16 +7,17 @@
     "node": ">=20"
   },
   "scripts": {
-    "check-cdn": "node scripts/check-cdn-versions.cjs",
-    "verify-cdn": "node scripts/verify-lucide-cdn.cjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "vite": "^5.4.0"
-  },
   "dependencies": {
-    "lucide": "^0.263.0"
+    "lucide-react": "^0.460.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.0"
   }
 }

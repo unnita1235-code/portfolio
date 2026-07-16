@@ -1,0 +1,126 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: transparent;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 2rem;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.navbar-logo-dot {
+  color: var(--accent);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.navbar-links a.active {
+  color: var(--text-primary);
+}
+
+.navbar-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 2px;
+}
+
+.navbar-links a:hover {
+  color: var(--text-primary);
+}
+
+.navbar-cta {
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff !important;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}
+
+.navbar-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.navbar-toggle {
+  display: none;
+  color: var(--text-primary);
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 0.8rem 1.25rem; }
+
+  .navbar-toggle { display: block; }
+
+  .navbar-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+  }
+
+  .navbar-links a {
+    padding: 0.85rem 2rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .navbar-links a.active::after {
+    display: none;
+  }
+
+  .navbar-cta {
+    margin: 0.5rem 2rem;
+    text-align: center;
+    width: calc(100% - 4rem);
+  }
+}
