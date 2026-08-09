@@ -1,133 +1,146 @@
 import { useState } from 'react';
-import { Send, Github, Linkedin, Mail, Twitter, CircleCheck as CheckCircle2 } from 'lucide-react';
-import { personal } from '../data/portfolio.js';
-import { useScrollReveal } from '../hooks/useScrollReveal.js';
+import { Send, CircleCheck as CheckCircle2, CircleAlert as AlertCircle, Loader as Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase.js';
+import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
 import './Contact.css';
 
 export default function Contact() {
-  const { ref, visible } = useScrollReveal();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
-
-  const validate = () => {
-    const e = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email.trim()) {
-      e.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      e.email = 'Enter a valid email';
-    }
-    if (!form.message.trim()) {
-      e.message = 'Message is required';
-    } else if (form.message.trim().length < 10) {
-      e.message = 'Message must be at least 10 characters';
-    }
-    return e;
-  };
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: undefined });
-    }
   };
 
-  const handleSubmit = (e) => {
+  const validate = () => {
+    if (!form.name.trim()) return 'Please enter your name.';
+    if (!form.email.trim()) return 'Please enter your email.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return 'Please enter a valid email address.';
+    if (form.message.trim().length < 10) return 'Message must be at least 10 characters.';
+    return '';
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const v = validate();
-    if (Object.keys(v).length > 0) {
-      setErrors(v);
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
+      setStatus('error');
       return;
     }
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.name} (${form.email})`);
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setSent(false), 5000);
+
+    setStatus('loading');
+    setError('');
+
+    try {
+      const { error: insertError } = await supabase.from('contact_messages').insert({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        message: form.message.trim(),
+      });
+
+      if (insertError) throw insertError;
+
+      setStatus('success');
+      setForm({ name: '', email: '', message: '' });
+    } catch (err) {
+      setStatus('error');
+      setError('Something went wrong sending your message. Please try again.');
+    }
   };
 
   return (
-    <section id="contact" className="contact" ref={ref}>
-      <div className={`contact-header ${visible ? 'visible' : ''}`}>
-        <h2 className="section-title">Let's <span className="gradient-text">Connect</span></h2>
-        <p className="section-subtitle">Have a project or role in mind? I'd love to hear about it.</p>
-      </div>
-
-      <div className={`contact-body ${visible ? 'visible' : ''}`}>
-        <div className="contact-info">
-          <p className="contact-info-text">
-            I'm always open to discussing AI engineering work, Gen AI projects, or collaboration opportunities.
+    <section id="contact" className="section">
+      <div className="container">
+        <div className="section-header fade-in">
+          <span className="section-eyebrow">Contact</span>
+          <h2 className="section-title">Let's build something</h2>
+          <p className="section-subtitle">
+            Have a project in mind or just want to say hi? Drop me a message.
           </p>
-          <div className="contact-socials">
-            <a href={personal.github} target="_blank" rel="noopener noreferrer" className="contact-social">
-              <Github size={20} /> <span>GitHub</span>
-            </a>
-            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="contact-social">
-              <Linkedin size={20} /> <span>LinkedIn</span>
-            </a>
-            <a href={personal.twitter} target="_blank" rel="noopener noreferrer" className="contact-social">
-              <Twitter size={20} /> <span>Twitter / X</span>
-            </a>
-            <a href={`mailto:${personal.email}`} className="contact-social">
-              <Mail size={20} /> <span>Email</span>
-            </a>
-          </div>
         </div>
-
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
-          {sent && (
-            <div className="contact-success">
-              <CheckCircle2 size={18} /> Your email client should now be open. Thank you!
-            </div>
-          )}
-          <div className="form-field">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className={errors.name ? 'error' : ''}
-              placeholder="Your name"
-            />
-            {errors.name && <span className="form-error">{errors.name}</span>}
+        <div className="contact-wrap fade-in">
+          <div className="contact-info">
+            <p className="contact-info-label">Email me directly at</p>
+            <a href={`mailto:${PORTFOLIO_CONFIG.email}`} className="contact-email">
+              {PORTFOLIO_CONFIG.email}
+            </a>
+            <p className="contact-info-subtitle">
+              I typically respond within 24 hours. Looking forward to hearing from you.
+            </p>
           </div>
-
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className={errors.email ? 'error' : ''}
-              placeholder="you@example.com"
-            />
-            {errors.email && <span className="form-error">{errors.email}</span>}
-          </div>
-
-          <div className="form-field">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              value={form.message}
-              onChange={handleChange}
-              className={errors.message ? 'error' : ''}
-              placeholder="Tell me about your project or role..."
-            />
-            {errors.message && <span className="form-error">{errors.message}</span>}
-          </div>
-
-          <button type="submit" className="contact-submit">
-            <Send size={18} /> Send Message
-          </button>
-        </form>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            {status === 'success' ? (
+              <div className="contact-success">
+                <CheckCircle2 size={48} />
+                <h3>Message sent!</h3>
+                <p>Thanks for reaching out. I'll get back to you soon.</p>
+                <button className="contact-reset-btn" onClick={() => setStatus('idle')}>
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="contact-field">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    disabled={status === 'loading'}
+                  />
+                </div>
+                <div className="contact-field">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    disabled={status === 'loading'}
+                  />
+                </div>
+                <div className="contact-field">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project..."
+                    disabled={status === 'loading'}
+                  />
+                </div>
+                {status === 'error' && (
+                  <div className="contact-error">
+                    <AlertCircle size={18} />
+                    <span>{error}</span>
+                  </div>
+                )}
+                <button type="submit" className="contact-submit" disabled={status === 'loading'}>
+                  {status === 'loading' ? (
+                    <>
+                      <Loader2 size={18} className="spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );

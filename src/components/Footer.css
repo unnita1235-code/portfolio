@@ -63,6 +63,10 @@
   gap: 0.25rem;
 }
 
+.footer-copy svg {
+  color: var(--accent);
+}
+
 @media (max-width: 768px) {
   .footer-inner {
     flex-direction: column;

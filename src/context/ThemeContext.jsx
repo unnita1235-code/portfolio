@@ -9,7 +9,7 @@ export function ThemeProvider({ children }) {
   });
 
   const activeTheme = useMemo(() => {
-    return PORTFOLIO_CONFIG.themes.find((theme) => theme.name === themeName) || PORTFOLIO_CONFIG.themes[0];
+    return PORTFOLIO_CONFIG.themes.find((t) => t.name === themeName) || PORTFOLIO_CONFIG.themes[0];
   }, [themeName]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export function ThemeProvider({ children }) {
 }
 
 export function useTheme() {
-  const value = useContext(ThemeContext);
-  if (!value) throw new Error('useTheme must be used inside ThemeProvider');
-  return value;
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
+  return ctx;
 }

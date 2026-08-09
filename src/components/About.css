@@ -1,20 +1,8 @@
-.about {
-  padding-top: 4rem;
-}
-
 .about-content {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 4rem;
   align-items: start;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.about-content.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .about-left {
@@ -86,6 +74,11 @@
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-3px);
+}
+
+.about-location {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 .about-right {

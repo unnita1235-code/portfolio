@@ -1,74 +1,50 @@
-import { ArrowRight, Mail, Sparkles } from 'lucide-react';
-import { personal } from '../data/portfolio.js';
-import { useScrollReveal } from '../hooks/useScrollReveal.js';
+import { useTheme } from '../context/ThemeContext.jsx';
+import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
+import { ArrowDown, Mail, Sparkles } from 'lucide-react';
 import './Hero.css';
 
 export default function Hero() {
-  const { ref, visible } = useScrollReveal();
-
-  const scrollTo = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
-  };
+  const { themes, themeName, setTheme } = useTheme();
 
   return (
-    <section id="home" className="hero" ref={ref}>
-      <div className="hero-bg">
-        <div className="hero-orb hero-orb-1" />
-        <div className="hero-orb hero-orb-2" />
-        <div className="hero-orb hero-orb-3" />
-        <div className="hero-grid-overlay" />
-      </div>
-
-      <div className={`hero-content ${visible ? 'visible' : ''}`}>
-        <div className="hero-badge">
+    <section id="hero" className="hero">
+      <div className="hero-glow" />
+      <div className="hero-grid-bg" />
+      <div className="container hero-content">
+        <div className="hero-badge fade-in">
           <Sparkles size={14} />
-          <span>Available for AI Engineering Roles</span>
-          <span className="hero-badge-dot" />
+          <span>Available for new projects</span>
         </div>
-
-        <h1 className="hero-title">
-          {personal.tagline.split(' ').slice(0, -2).join(' ')}{' '}
-          <span className="gradient-text">{personal.tagline.split(' ').slice(-2).join(' ')}</span>
+        <h1 className="hero-title fade-in">
+          Hi, I'm <span className="hero-name">{PORTFOLIO_CONFIG.name}</span>
         </h1>
-
-        <p className="hero-subtitle">{personal.bio}</p>
-
-        <div className="hero-actions">
-          <a
-            href="#projects"
-            onClick={(e) => scrollTo(e, 'projects')}
-            className="hero-btn hero-btn-primary"
-          >
-            View Work <ArrowRight size={18} />
+        <p className="hero-role fade-in">{PORTFOLIO_CONFIG.role}</p>
+        <p className="hero-tagline fade-in">{PORTFOLIO_CONFIG.tagline}</p>
+        <div className="hero-actions fade-in">
+          <a href="#contact" className="hero-cta-primary">
+            <Mail size={18} />
+            Get in Touch
           </a>
-          <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, 'contact')}
-            className="hero-btn hero-btn-secondary"
-          >
-            <Mail size={18} /> Contact Me
+          <a href="#about" className="hero-cta-secondary">
+            About Me
+            <ArrowDown size={18} />
           </a>
         </div>
-
-        <div className="hero-stats">
-          <div className="hero-stat">
-            <span className="hero-stat-num">6+</span>
-            <span className="hero-stat-label">AI Projects</span>
-          </div>
-          <div className="hero-stat-divider" />
-          <div className="hero-stat">
-            <span className="hero-stat-num">3+</span>
-            <span className="hero-stat-label">Years Coding</span>
-          </div>
-          <div className="hero-stat-divider" />
-          <div className="hero-stat">
-            <span className="hero-stat-num">∞</span>
-            <span className="hero-stat-label">Curiosity</span>
-          </div>
+        <div className="hero-themes fade-in">
+          {themes.map((t) => (
+            <button
+              key={t.name}
+              className={`theme-dot ${themeName === t.name ? 'active' : ''}`}
+              style={{ background: `linear-gradient(135deg, ${t.accent}, ${t.accent2})` }}
+              onClick={() => setTheme(t.name)}
+              aria-label={`Switch to ${t.name} theme`}
+            />
+          ))}
         </div>
       </div>
+      <a href="#about" className="hero-scroll" aria-label="Scroll down">
+        <span className="hero-scroll-mouse" />
+      </a>
     </section>
   );
 }
