@@ -1,12 +1,10 @@
-import { Github, Linkedin, Twitter, Dribbble, Heart } from 'lucide-react';
+import { Github, Linkedin, Heart } from 'lucide-react';
 import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
 import './Footer.css';
 
 const SOCIAL_ICONS = {
   github: Github,
   linkedin: Linkedin,
-  twitter: Twitter,
-  dribbble: Dribbble,
 };
 
 export default function Footer() {
@@ -20,7 +18,7 @@ export default function Footer() {
           <div className="footer-logo">
             {initials}<span>.</span>
           </div>
-          <p className="footer-tagline">{name} — Full-Stack Developer</p>
+          <p className="footer-tagline">{name} — AI Developer</p>
         </div>
         <div className="footer-socials">
           {socials.map((s) => {

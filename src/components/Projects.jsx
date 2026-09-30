@@ -37,9 +37,11 @@ export default function Projects() {
               </div>
 
               <div className="project-links">
-                <a href={p.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                  <ExternalLink size={16} /> Live Demo
-                </a>
+                {p.demo && (
+                  <a href={p.demo} target="_blank" rel="noopener noreferrer" className="project-link">
+                    <ExternalLink size={16} /> Live Demo
+                  </a>
+                )}
                 <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-link">
                   <Github size={16} /> Source
                 </a>

@@ -5,6 +5,7 @@ import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Resume', href: '#resume' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -18,7 +19,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ['about', 'skills', 'resume', 'contact'];
+      const sections = ['about', 'skills', 'projects', 'resume', 'contact'];
       let current = '';
       for (const id of sections) {
         const el = document.getElementById(id);

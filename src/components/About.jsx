@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Dribbble } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
 import { Code as Code2, Zap, Palette, Users } from 'lucide-react';
 import './About.css';
@@ -13,8 +13,6 @@ const ICON_MAP = {
 const SOCIAL_ICONS = {
   github: Github,
   linkedin: Linkedin,
-  twitter: Twitter,
-  dribbble: Dribbble,
 };
 
 export default function About() {
