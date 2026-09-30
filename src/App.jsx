@@ -24,7 +24,7 @@ export default function App() {
       { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
     );
 
-    document.querySelectorAll('.fade-in').forEach((el) => observerRef.current.observe(el));
+    document.querySelectorAll('.fade-in, .stagger-item').forEach((el) => observerRef.current.observe(el));
 
     return () => observerRef.current?.disconnect();
   }, []);

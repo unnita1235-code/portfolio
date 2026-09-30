@@ -25,6 +25,33 @@ export function useScrollReveal(options = {}) {
   return { ref, visible };
 }
 
+export function useStaggerReveal(itemCount = 0, baseDelay = 80, options = {}) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px', ...options }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const delays = Array.from({ length: itemCount }, (_, i) => i * baseDelay);
+
+  return { ref, visible, delays };
+}
+
 export function useActiveSection() {
   const [active, setActive] = useState('home');
 

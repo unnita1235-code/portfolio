@@ -68,12 +68,18 @@
   border-radius: 12px;
   color: var(--text-secondary);
   transition: var(--transition);
+  touch-action: manipulation;
 }
 
 .about-socials a:hover {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-3px);
+}
+
+.about-socials a:active {
+  transform: scale(0.92);
+  transition: var(--press);
 }
 
 .about-location {
@@ -96,11 +102,12 @@
   color: var(--text-secondary);
   font-size: 1rem;
   margin-bottom: 2.5rem;
+  line-height: 1.7;
 }
 
 .about-highlights {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 
@@ -118,6 +125,7 @@
 .about-highlight:hover {
   border-color: var(--border-hover);
   transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px var(--accent-glow);
 }
 
 .about-highlight-icon {
@@ -140,14 +148,21 @@
 .about-highlight p {
   font-size: 0.82rem;
   color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    text-align: center;
   }
-  .about-highlights {
-    grid-template-columns: 1fr;
+
+  .about-right {
+    max-width: 100%;
+  }
+
+  .about-bio, .about-story {
+    text-align: left;
   }
 }

@@ -10,11 +10,17 @@
   font-weight: 600;
   margin-top: 0.5rem;
   transition: var(--transition);
+  touch-action: manipulation;
 }
 
 .resume-download-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 24px var(--accent-glow);
+}
+
+.resume-download-btn:active {
+  transform: scale(0.95);
+  transition: var(--press);
 }
 
 .resume-body {
@@ -41,6 +47,7 @@
 .resume-summary p {
   color: var(--text-secondary);
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .resume-columns {
@@ -73,6 +80,8 @@
 
 .resume-item:hover {
   border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -12px var(--accent-glow);
 }
 
 .resume-item-header {
@@ -80,6 +89,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .resume-item-header h4 {
@@ -109,6 +119,7 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-bottom: 0.4rem;
+  line-height: 1.6;
 }
 
 .resume-points li::before {
@@ -138,6 +149,12 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+
+.resume-certs li:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
 }
 
 .resume-certs li svg {
@@ -145,7 +162,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .resume-columns {
     grid-template-columns: 1fr;
     gap: 1.5rem;

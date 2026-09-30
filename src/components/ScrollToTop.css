@@ -16,6 +16,7 @@
   pointer-events: none;
   transition: var(--transition);
   box-shadow: 0 4px 20px var(--accent-glow);
+  touch-action: manipulation;
 }
 
 .scroll-top.show {
@@ -26,6 +27,11 @@
 
 .scroll-top:hover {
   transform: translateY(-3px) scale(1.05);
+}
+
+.scroll-top:active {
+  transform: scale(0.9);
+  transition: var(--press);
 }
 
 @media (max-width: 768px) {

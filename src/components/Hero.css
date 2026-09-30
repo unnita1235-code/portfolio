@@ -43,6 +43,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding: 0 1rem;
 }
 
 .hero-badge {
@@ -63,10 +64,11 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-size: clamp(2rem, 7vw, 4.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
+  word-break: break-word;
 }
 
 .hero-name {
@@ -86,6 +88,7 @@
   font-size: 1rem;
   color: var(--text-muted);
   max-width: 480px;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -107,11 +110,17 @@
   font-weight: 600;
   font-size: 0.95rem;
   transition: var(--transition);
+  touch-action: manipulation;
 }
 
 .hero-cta-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.hero-cta-primary:active {
+  transform: scale(0.95);
+  transition: var(--press);
 }
 
 .hero-cta-secondary {
@@ -126,11 +135,17 @@
   font-weight: 500;
   font-size: 0.95rem;
   transition: var(--transition);
+  touch-action: manipulation;
 }
 
 .hero-cta-secondary:hover {
   border-color: var(--border-hover);
   transform: translateY(-2px);
+}
+
+.hero-cta-secondary:active {
+  transform: scale(0.95);
+  transition: var(--press);
 }
 
 .hero-themes {
@@ -146,6 +161,7 @@
   border: 2px solid transparent;
   transition: var(--transition);
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .theme-dot.active {
@@ -155,6 +171,11 @@
 
 .theme-dot:hover {
   transform: scale(1.15);
+}
+
+.theme-dot:active {
+  transform: scale(0.9);
+  transition: var(--press);
 }
 
 .hero-scroll {
@@ -192,7 +213,7 @@
   50% { opacity: 0.3; top: 18px; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .hero-actions {
     flex-direction: column;
     width: 100%;

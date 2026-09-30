@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { LayoutGrid as Layout, Server, Wrench, PenTool } from 'lucide-react';
 import { PORTFOLIO_CONFIG } from '../data/portfolio.js';
+import { useStaggerReveal } from '../hooks/useScrollReveal.js';
 import './Skills.css';
 
 const ICON_MAP = {
@@ -11,26 +12,7 @@ const ICON_MAP = {
 };
 
 export default function Skills() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            obs.disconnect();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const { ref, visible, delays } = useStaggerReveal(PORTFOLIO_CONFIG.skills.length, 80);
 
   return (
     <section id="skills" className="section">
@@ -40,11 +22,15 @@ export default function Skills() {
           <h2 className="section-title">What I work with</h2>
           <p className="section-subtitle">A toolkit refined over years of shipping production software.</p>
         </div>
-        <div ref={ref} className={`skills-grid fade-in ${visible ? 'visible' : ''}`}>
-          {PORTFOLIO_CONFIG.skills.map((group) => {
+        <div ref={ref} className="skills-grid">
+          {PORTFOLIO_CONFIG.skills.map((group, gi) => {
             const Icon = ICON_MAP[group.icon];
             return (
-              <div key={group.category} className="skill-card">
+              <div
+                key={group.category}
+                className={`skill-card stagger-item ${visible ? 'visible' : ''}`}
+                style={{ '--stagger-delay': `${delays[gi]}ms` }}
+              >
                 <div className="skill-card-header">
                   <div className="skill-card-icon">
                     {Icon ? <Icon size={22} /> : null}

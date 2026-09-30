@@ -22,8 +22,9 @@
   --accent-glow: rgba(99, 102, 241, 0.25);
 
   --card-radius: 20px;
-  --max-width: 1100px;
+  --max-width: 1280px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --press: transform 0.15s ease-out;
 }
 
 * {
@@ -35,6 +36,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
@@ -63,6 +65,7 @@ button {
   border: none;
   background: none;
   color: inherit;
+  touch-action: manipulation;
 }
 
 input, textarea {
@@ -91,11 +94,35 @@ input, textarea {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 .section {
-  padding: 6rem 0;
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 .section-header {
@@ -138,11 +165,23 @@ input, textarea {
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 4rem 0;
-  }
-  .container {
-    padding: 0 1.25rem;
+.stagger-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
+.stagger-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .stagger-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
